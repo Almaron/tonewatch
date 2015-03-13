@@ -12,4 +12,4 @@
 !/log/.keep
 /tmp
 /.idea
-
+/db/tonewatch_*
