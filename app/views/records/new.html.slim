@@ -1,0 +1,16 @@
+h1 Добавить запись
+#new_record
+  = form_for @record do |f|
+    - if @record.errors.any?
+      .errors
+        | Пожалуйста, введите корректные данные
+    .line
+      = f.label :upper_tone, "Давление:"
+      = f.number_field :upper_tone, class: 'short'
+      | /
+      = f.number_field :lower_tone, class: 'short'
+    .line
+      = f.label :pulse, 'Пульс:'
+      = f.number_field :pulse
+    .line
+      = f.submit "Добавить"

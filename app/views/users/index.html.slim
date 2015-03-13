@@ -1,0 +1,27 @@
+h1 Пользователи
+#users_list
+  table
+    tr
+      th Имя
+      th Номер полиса
+      th Email
+      th Админ?
+      th
+    - if @users.empty?
+      tr
+        td colspan=5 Нет пользователей
+    - @users.each do |user|
+      tr
+        td
+          = user.full_name
+        td
+          = user.polis
+        td
+          = user.email
+        td
+          = user.admin? ? "Да" : "Нет"
+        td
+          = link_to "Ред.", edit_user_path(user)
+          | &nbsp; &nbsp;
+          = link_to "Удалить", user, method: :delete
+= render "form"

@@ -1,0 +1,26 @@
+h1 История показаний
+#record_index
+  table
+    tr.head
+      th Дата
+      th Давление
+      th Пульс
+      th
+    - @records.each do |record|
+      tr.line
+        td
+          = record.created_at.strftime('%d.%m.%Y')
+        td
+          = record.upper_tone
+          | &nbsp;/&nbsp;
+          = record.lower_tone
+        td
+          = record.pulse
+        td.delete
+          = link_to "Удалить", record, method: :delete
+    - if @records.empty?
+      tr.no_records
+        td colspan=4 Нет данных
+
+#new_record
+  = link_to "Добавить запись", new_record_path
