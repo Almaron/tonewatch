@@ -9,18 +9,13 @@
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 #
-#default: &default
-#  adapter: mysql2
-#  encoding: utf8
-#  pool: 5
-#  username: root
-#  password: qwsazx
-#  socket: /var/run/mysqld/mysqld.sock
-
 default: &default
-  adapter: sqlite3
+  adapter: mysql2
+  encoding: utf8
   pool: 5
-  timeout: 5000
+  username: root
+  password: qwsazx
+  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
@@ -53,5 +48,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
   database: tonewatch_production
+  pool: 5
+  timeout: 5000
